@@ -2,12 +2,12 @@
 
 Planificador de ruta para minería espacial usando algoritmos bioinspirados con datos reales de asteroides.
 
-# Cinturon Asteroides
+## Cinturon Asteroides
 
 Aplicación de prueba para visualización y animación de asteroides del cinturón de asteroides usando la API JPL de la NASA
 
 ```
-"https://ssd-api.jpl.nasa.gov/sbdb.api"
+https://ssd-api.jpl.nasa.gov/sbdb.api
 ```
 
 ### Clases de orbitas posibles a probar
