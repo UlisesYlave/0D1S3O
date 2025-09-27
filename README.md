@@ -1,4 +1,4 @@
-# 0D1S3O
+# 0D1S3O - On Progress
 
 Planificador de ruta para minería espacial usando algoritmos bioinspirados con datos reales de asteroides.
 
