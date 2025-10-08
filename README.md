@@ -1,49 +1,53 @@
 # 0D1S3O - On Progress
+## Abstract
+This work addresses the problem of the economic feasibility of space mining, analyzing the transition from the initial focus on precious metals towards the exploitation of water on asteroids for in-situ markets. An optimization model is proposed that integrates R* search algorithms with economic and technical criteria to design commercially viable prospecting routes. The objective is to identify optimal sequences of asteroids that maximize the return on investment, considering mission costs, mining operation costs, and the market value of water in space. The results demonstrate that multi-objective economic optimization surpasses purely technical approaches, identifying routes that reach the break-even point within timeframes compatible with private investment.
 
-Planificador de ruta para minería espacial usando algoritmos bioinspirados con datos reales de asteroides.
+## Problem Statement
+Asteroid mining has captured the scientific and entrepreneurial imagination for decades, evolving significantly in its strategic focus. Initially, pioneers like Kargel (1996) [4] and Elvis (2014) [5] visualized asteroids as sources of precious metals, particularly platinum group metals (PGMs), arguing that their high market value (∼$70,000/kg) would justify the enormous costs of space missions. Kargel [4] calculated that a single metallic asteroid could contain up to 7,500 tons of platinum, representing a potential value of trillions of dollars.
 
-## Cinturon Asteroides
+However, more recent techno-economic analyses, particularly the work of Hein et al. (2019) in Acta Astronautica, have demonstrated that this approach faces nearly insurmountable economic obstacles in the short and medium term. Platinum mining requires processing rates orders of magnitude higher due to its low concentration (∼10⁻⁵), and the injection of even small quantities into the terrestrial market would cause a drastic price drop, eliminating profitability.
 
-Aplicación de prueba para visualización y animación de asteroides del cinturón de asteroides usando la API JPL de la NASA
+The new paradigm focuses on the mining of volatiles, especially water, for its use in space. This approach is significantly more viable because:
 
-```
-https://ssd-api.jpl.nasa.gov/sbdb.api
-```
+* It creates an in-situ market where water is sold as propellant for satellites and spacecraft, competing with the high cost of launch from Earth (∼$20,000/kg)
 
-### Clases de orbitas posibles a probar
-* MBA: Main-belt Asteroid
-* OMB: Outer Main-belt Asteroid 
-* IMB: Inner Main-belt Asteroid
-* AMO: Amor
-* APO: Apollo
-* ATE: Aten
+* It is technically less demanding, as the concentration of water in C-type asteroids is much higher (5-10%)
 
-### Cálculo de movimiento
+* It serves as a catalyst for a sustainable space economy
 
-#### Parámetros orbitales clave
-* a: Semieje mayor (tamaño órbita)
-* e: Excentricidad (forma órbita)
-* i: Inclinación (ángulo respecto eclíptica)
-* Ω (om): Longitud nodo ascendente
-* ω (w): Argumento del perihelio
-* M (ma): Anomalía media (posición actual)
+The central technical problem lies in the optimization of multi-asteroid prospecting routes. Foundational research such as Olympio (2011) [3] demonstrated that visiting multiple asteroids in a single mission reduces costs and increases returns. Building on this foundation, Yang et al. (2015) developed advanced methods using gravity assists and optimization algorithms like PSO to design low delta-V routes.
 
-#### Ecuación de Kepler
-```Python
-# Resolver M = E - e·sin(E) para E (anomalía excéntrica)
-E = M  # Aproximación inicial
-for _ in range(10):
-    E_new = E - (E - e * sin(E) - M) / (1 - e * cos(E))
-    E = E_new
+However, a critical gap persists: these models are optimized for minimum technical cost (delta-V), but do not comprehensively consider commercial economic feasibility, which must include mining operation costs, the in-situ business model, and potential revenue.
 
-# Luego calcular anomalía verdadera (θ)
-theta = 2 * atan(sqrt((1+e)/(1-e)) * tan(E/2))
-```
+### Hypothesis:
+The optimization of multi-asteroid prospecting routes using the R* search algorithm, which integrates low-cost transfers with gravity assists and an in-situ market economic model, will allow for the identification of commercially viable missions that overcome the limitations of purely technical optimization models.
 
-#### Movimiento temporal
-```Python
-# La anomalía media cambia con el tiempo:
-M(t) = M₀ + n·t
-# donde n = 360°/periodo (movimiento medio)
-```
+### Objectives:
+
+#### General:
+To design and evaluate an optimization model for asteroid prospecting routes that, through the combination of the R* algorithm, low-cost orbital transfers, and an in-situ market economic model, demonstrates the commercial feasibility of a space-based prospecting and water supply service.
+
+#### Specific:
+* Develop an Economic Evaluation Model for the In-Situ Market
+    * Integrate mining and transportation costs to orbital markets (Lunar Gateway Station, cis-lunar orbits)
+
+    * Create an evaluation function that maximizes Return on Investment (ROI) based on space-based sale prices
+
+* Implement the R* Search Algorithm for Multi-Asteroid Route Optimization
+
+    * Adapt R* to explore asteroid sequences with economic criteria
+
+    * Use the framework of orbital transfers and gravity assists for delta-V calculation
+
+* Validate Against Traditional Mission Planning Approaches
+
+    * Compare the performance of R* against the PSO of Yang[2] et al.
+
+    * Use a database of known NEOs and criteria established in the literature (delta-V, spectral type, water content).
+
+* Identify Commercially Viable Routes
+
+    * Apply the integrated model to find routes with an achievable break-even point
+
+    * Perform a sensitivity analysis of critical parameters in economic feasibilit
 
