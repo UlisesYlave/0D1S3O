@@ -51,3 +51,17 @@ To design and evaluate an optimization model for asteroid prospecting routes tha
 
     * Perform a sensitivity analysis of critical parameters in economic feasibilit
 
+
+## References:
+
+[1].	Hein, A. M., et al. "A techno-economic analysis of asteroid mining." Acta Astronautica (2019)
+
+[2].	Yang, H., et al. "Low-cost transfer between asteroids with distant orbits using multiple gravity assists." Advances in Space Research (2015)
+
+[3].	Olympio, J.T. "Optimal control problem for low-thrust multiple asteroid tour missions." Journal of Guidance, Control, and Dynamics (2011)
+
+[4].	Kargel, J.S. "Market value of asteroidal precious metals in an age of diminishing terrestrial resources." Engineering, Construction, and Operations in Space V (1996)
+
+[5].	Elvis, M. "How many ore-bearing asteroids?" Planetary and Space Science (2014)
+
+
