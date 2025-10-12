@@ -51,6 +51,43 @@ To design and evaluate an optimization model for asteroid prospecting routes tha
 
     * Perform a sensitivity analysis of critical parameters in economic feasibilit
 
+## Methodology
+
+### Mechanic Orbital Specific Functions
+
+#### Lambert Transfer
+
+#### Find Gravity Assist Opportunities
+
+#### Calcute Return Delta V
+
+### R* Algorithm adapted for Economy Orbital Optimization
+```
+f(s) = g(s) + h(s) = -ROI(s) + h(s)
+```
+
+* g(s) = -ROI(s): Real acumulated cost
+* h(s): Heurístic that estimates ROI maximum potencial of no visited asteroids.
+
+### Main Algorithm
+
+#### R* ASTEROID OPTIMIZATION
+
+#### SELECT RANDOM INTERMEDIATE GOAL
+
+#### A STAR TO RANDOM GOAL
+
+### Integrated Economic Model
+#### ROI Calculus
+```
+ROI(s) = (Itotal(s) - Ctotal(s)) / (Cdev + Claunch)
+```
+* Incomes: Itotal(s) = s.mwait * Pw
+* Total Costs: Ctotal(s) = Cprop(s) + Cmin(s) + Cops(s) + Creturn(s)
+* Propulsion Cost: Cprop(s) = Cfuel*m0*(1- e^(-s.deltaVused/(Iused*g0)))
+* Mining Cost: Cmin(s) = tmining*costhour*|s.seq|
+* Operations Cost: Cops(s) = s.tcurrent*costday
+* Return Cost: Creturn(s) = deltaVreturn*Cfuel*mwet
 
 ## References:
 
@@ -64,4 +101,6 @@ To design and evaluate an optimization model for asteroid prospecting routes tha
 
 [5].	Elvis, M. "How many ore-bearing asteroids?" Planetary and Space Science (2014)
 
+[6] Izzo, D. "Revisiting Lambert's Problem." Celestial Mechanics and Dynamical Astronomy, 121(1), 2014.
 
+[7] Likhachev, M., & Stentz, A. "R* Search." Proceedings of the National Conference on Artificial Intelligence, 2005.
