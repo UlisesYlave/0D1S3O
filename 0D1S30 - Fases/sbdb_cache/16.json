@@ -1,0 +1,138 @@
+{
+  "orbit": {
+    "condition_code": "0",
+    "sb_used": "SB441-N16",
+    "n_obs_used": 7401,
+    "epoch": "2461000.5",
+    "orbit_id": "92",
+    "producer": "Ryan Park",
+    "two_body": null,
+    "comment": null,
+    "elements": [
+      {
+        "value": ".1343462202634327",
+        "title": "eccentricity",
+        "sigma": "2.9539E-9",
+        "units": null,
+        "name": "e",
+        "label": "e"
+      },
+      {
+        "sigma": "2.8768E-9",
+        "value": "2.923314514376521",
+        "title": "semi-major axis",
+        "label": "a",
+        "name": "a",
+        "units": "au"
+      },
+      {
+        "name": "q",
+        "units": "au",
+        "label": "q",
+        "sigma": "9.8972E-9",
+        "title": "perihelion distance",
+        "value": "2.530578258728803"
+      },
+      {
+        "label": "i",
+        "units": "deg",
+        "name": "i",
+        "title": "inclination; angle with respect to x-y ecliptic plane",
+        "value": "3.097291662719076",
+        "sigma": "2.9589E-7"
+      },
+      {
+        "label": "node",
+        "name": "om",
+        "units": "deg",
+        "sigma": "6.063E-6",
+        "title": "longitude of the ascending node",
+        "value": "150.0098773790708"
+      },
+      {
+        "title": "argument of perihelion",
+        "value": "229.7534129677803",
+        "sigma": "6.1822E-6",
+        "label": "peri",
+        "units": "deg",
+        "name": "w"
+      },
+      {
+        "value": "40.63883784197816",
+        "title": "mean anomaly",
+        "sigma": "1.7886E-6",
+        "units": "deg",
+        "name": "ma",
+        "label": "M"
+      },
+      {
+        "name": "tp",
+        "units": "TDB",
+        "label": "tp",
+        "sigma": "8.8706E-6",
+        "title": "time of perihelion passage",
+        "value": "2460794.413036557865"
+      },
+      {
+        "sigma": "2.6949E-6",
+        "value": "1825.62570139573",
+        "title": "sidereal orbital period",
+        "name": "per",
+        "units": "d",
+        "label": "period"
+      },
+      {
+        "label": "n",
+        "name": "n",
+        "units": "deg/d",
+        "sigma": "2.9108E-10",
+        "value": ".1971926664511637",
+        "title": "mean motion"
+      },
+      {
+        "label": "Q",
+        "name": "ad",
+        "units": "au",
+        "sigma": "3.2633E-9",
+        "value": "3.316050770024239",
+        "title": "aphelion distance"
+      }
+    ],
+    "data_arc": "14782",
+    "n_del_obs_used": null,
+    "moid_jup": "2.14293",
+    "last_obs": "2024-12-11",
+    "pe_used": "DE441",
+    "source": "JPL",
+    "equinox": "J2000",
+    "moid": "1.53323",
+    "n_dop_obs_used": null,
+    "cov_epoch": "2457856.5",
+    "soln_date": "2025-02-06 14:15:44",
+    "not_valid_before": null,
+    "rms": ".17629",
+    "t_jup": "3.263",
+    "model_pars": [],
+    "not_valid_after": null,
+    "first_obs": "1984-06-22"
+  },
+  "signature": {
+    "source": "NASA/JPL Small-Body Database (SBDB) API",
+    "version": "1.3"
+  },
+  "object": {
+    "spkid": "20000016",
+    "kind": "an",
+    "prefix": null,
+    "orbit_class": {
+      "code": "MBA",
+      "name": "Main-belt Asteroid"
+    },
+    "pha": false,
+    "orbit_id": "92",
+    "neo": false,
+    "des": "16",
+    "shortname": "16 Psyche",
+    "fullname": "16 Psyche (A852 FA)"
+  }
+}

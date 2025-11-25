@@ -1,106 +1,262 @@
-# 0D1S3O - On Progress
-## Abstract
-This work addresses the problem of the economic feasibility of space mining, analyzing the transition from the initial focus on precious metals towards the exploitation of water on asteroids for in-situ markets. An optimization model is proposed that integrates R* search algorithms with economic and technical criteria to design commercially viable prospecting routes. The objective is to identify optimal sequences of asteroids that maximize the return on investment, considering mission costs, mining operation costs, and the market value of water in space. The results demonstrate that multi-objective economic optimization surpasses purely technical approaches, identifying routes that reach the break-even point within timeframes compatible with private investment.
+# 0D1S3O: R* Search para Optimización Económica de Minería de Asteroides
 
-## Problem Statement
-Asteroid mining has captured the scientific and entrepreneurial imagination for decades, evolving significantly in its strategic focus. Initially, pioneers like Kargel (1996) [4] and Elvis (2014) [5] visualized asteroids as sources of precious metals, particularly platinum group metals (PGMs), arguing that their high market value (∼$70,000/kg) would justify the enormous costs of space missions. Kargel [4] calculated that a single metallic asteroid could contain up to 7,500 tons of platinum, representing a potential value of trillions of dollars.
+## 📖 Descripción
 
-However, more recent techno-economic analyses, particularly the work of Hein et al. (2019) in Acta Astronautica, have demonstrated that this approach faces nearly insurmountable economic obstacles in the short and medium term. Platinum mining requires processing rates orders of magnitude higher due to its low concentration (∼10⁻⁵), and the injection of even small quantities into the terrestrial market would cause a drastic price drop, eliminating profitability.
+Este proyecto implementa el algoritmo **R*** (R-star) adaptado para la optimización económica de rutas de prospección de asteroides, con enfoque en la explotación de agua para mercados in-situ. El modelo integra criterios técnicos orbitales con evaluación económica comercial para identificar secuencias de asteroides que maximicen el retorno de inversión (ROI).
 
-The new paradigm focuses on the mining of volatiles, especially water, for its use in space. This approach is significantly more viable because:
+## 🚀 Instalación y Configuración
 
-* It creates an in-situ market where water is sold as propellant for satellites and spacecraft, competing with the high cost of launch from Earth (∼$20,000/kg)
+### Prerrequisitos
+```bash
+Python 3.8+
+Git
+```
 
-* It is technically less demanding, as the concentration of water in C-type asteroids is much higher (5-10%)
+### Instalación
+```bash
+# Clonar el repositorio
+git clone https://github.com/tu-usuario/0D1S30.git
+cd 0D1S30
 
-* It serves as a catalyst for a sustainable space economy
+# Instalar dependencias
+pip install -r requirements.txt
+```
 
-The central technical problem lies in the optimization of multi-asteroid prospecting routes. Foundational research such as Olympio (2011) [3] demonstrated that visiting multiple asteroids in a single mission reduces costs and increases returns. Building on this foundation, Yang et al. (2015) developed advanced methods using gravity assists and optimization algorithms like PSO to design low delta-V routes.
+### Estructura de Dependencias (requirements.txt)
+```txt
+numpy>=1.21.0
+matplotlib>=3.5.0
+scipy>=1.7.0
+pytest>=6.0.0
+pytest-cov>=2.12.0
+requests>=2.25.0  # Para descarga de datos NASA
+astropy>=4.3.0    # Para cálculos astronómicos
+```
 
-However, a critical gap persists: these models are optimized for minimum technical cost (delta-V), but do not comprehensively consider commercial economic feasibility, which must include mining operation costs, the in-situ business model, and potential revenue.
+## 🏗️ Estructura del Proyecto
 
-### Hypothesis:
-The optimization of multi-asteroid prospecting routes using the R* search algorithm, which integrates low-cost transfers with gravity assists and an in-situ market economic model, will allow for the identification of commercially viable missions that overcome the limitations of purely technical optimization models.
+```
+0D1S30/
+│
+├── src/
+│   ├── core/
+│   │   ├── asteroid.py          # Modelado de asteroides y propiedades
+│   │   ├── environment.py       # Ambiente de simulación orbital
+│   │   ├── state.py            # Representación del estado de la misión
+│   │   └── constants.py        # Parámetros físicos y económicos
+│   │
+│   ├── algorithms/
+│   │   ├── rstar.py            # Implementación de R* adaptado
+│   │   └── pso_solver.py       # Implementación PSO para comparación
+│   │
+│   ├── data/
+│   │   └── nasa_loader.py      # Carga de datos de NEOs de NASA
+│   │
+│   ├── visualization/
+│   │   ├── trajectory_plotter.py    # Visualización de trayectorias
+│   │   └── comparison_plots.py      # Gráficos comparativos
+│   │
+│   └── utils/
+│       └── helpers.py          # Utilidades matemáticas y orbitales
+│
+├── tests/                      # Suite de pruebas unitarias
+├── experiments/               # Scripts de experimentación
+├── results/                   # Resultados y figuras
+├── config/                    # Configuraciones
+└── main.py                    # Punto de entrada principal
+```
 
-### Objectives:
+## 🧪 Testing y Verificación
 
-#### General:
-To design and evaluate an optimization model for asteroid prospecting routes that, through the combination of the R* algorithm, low-cost orbital transfers, and an in-situ market economic model, demonstrates the commercial feasibility of a space-based prospecting and water supply service.
+### Ejecutar Tests Unitarios
+```bash
+# Ejecutar todos los tests
+python -m pytest tests/ -v
 
-#### Specific:
-* Develop an Economic Evaluation Model for the In-Situ Market
-    * Integrate mining and transportation costs to orbital markets (Lunar Gateway Station, cis-lunar orbits)
+# Ejecutar tests con cobertura
+python -m pytest tests/ --cov=src --cov-report=html
 
-    * Create an evaluation function that maximizes Return on Investment (ROI) based on space-based sale prices
+# Ejecutar tests específicos
+python -m pytest tests/test_algorithms/test_rstar.py -v
+python -m pytest tests/test_core/test_environment.py -v
 
-* Implement the R* Search Algorithm for Multi-Asteroid Route Optimization
+# Ejecutar tests de comparación con PSO
+python -m pytest tests/test_paper_comparison.py -v
+```
 
-    * Adapt R* to explore asteroid sequences with economic criteria
+### Ejecutar Experimentos
+```bash
+# Experimento principal del paper
+python experiments/paper_comparison_study.py
 
-    * Use the framework of orbital transfers and gravity assists for delta-V calculation
+# Estudio de parámetros
+python experiments/parameter_study.py
 
-* Validate Against Traditional Mission Planning Approaches
+```
 
-    * Compare the performance of R* against the PSO of Yang[2] et al.
+## 🎯 Problemática
 
-    * Use a database of known NEOs and criteria established in the literature (delta-V, spectral type, water content).
+La minería de asteroides ha evolucionado desde el enfoque inicial en metales preciosos hacia la explotación de volátiles, particularmente agua, para su uso en el espacio. Este nuevo paradigma es significativamente más viable porque:
 
-* Identify Commercially Viable Routes
+- **Crea un mercado in-situ** donde el agua se vende como propelente compitiendo con el alto costo de lanzamiento desde Tierra (~$20,000/kg)
+- **Es técnicamente menos demandante** ya que la concentración de agua en asteroides tipo C es mucho mayor (5-10%)
+- **Sirve como catalizador** para una economía espacial sostenible
 
-    * Apply the integrated model to find routes with an achievable break-even point
+## 🧠 Algoritmo R* Adaptado
 
-    * Perform a sensitivity analysis of critical parameters in economic feasibilit
+### Adaptación para Optimización Orbital-Económica
 
-## Methodology
+El algoritmo R* ha sido adaptado para explorar secuencias de asteroides considerando tanto criterios técnicos (delta-V, asistencias gravitatorias) como económicos (ROI, costos de operación).
 
-### Mechanic Orbital Specific Functions
-
-#### Lambert Transfer
-
-#### Find Gravity Assist Opportunities
-
-#### Calcute Return Delta V
-
-### R* Algorithm adapted for Economy Orbital Optimization
+**Función de Evaluación:**
 ```
 f(s) = g(s) + h(s) = -ROI(s) + h(s)
 ```
 
-* g(s) = -ROI(s): Real acumulated cost
-* h(s): Heurístic that estimates ROI maximum potencial of no visited asteroids.
+Donde:
+- **g(s) = -ROI(s)**: Costo real acumulado (negativo del ROI)
+- **h(s)**: Heurística que estima el ROI máximo potencial de asteroides no visitados
 
-### Main Algorithm
+### Mecanismo Principal
 
-#### R* ASTEROID OPTIMIZATION
+R* evita quedar atrapado en mínimos locales mediante:
+1. **Búsquedas locales de corto alcance** hacia objetivos aleatorios
+2. **Generación aleatoria de sub-objetivos** dentro de un radio Δ económico-orbital
+3. **Postergación de rutas difíciles** (estados AVOID)
+4. **Reconstrucción de la solución** desde caminos económicamente viables
 
-#### SELECT RANDOM INTERMEDIATE GOAL
+## ⚙️ Modelo Económico Integrado
 
-#### A STAR TO RANDOM GOAL
-
-### Integrated Economic Model
-#### ROI Calculus
+### Cálculo de ROI
 ```
-ROI(s) = (Itotal(s) - Ctotal(s)) / (Cdev + Claunch)
+ROI(s) = (I_total(s) - C_total(s)) / (C_dev + C_launch)
 ```
-* Incomes: Itotal(s) = s.mwait * Pw
-* Total Costs: Ctotal(s) = Cprop(s) + Cmin(s) + Cops(s) + Creturn(s)
-* Propulsion Cost: Cprop(s) = Cfuel*m0*(1- e^(-s.deltaVused/(Iused*g0)))
-* Mining Cost: Cmin(s) = tmining*costhour*|s.seq|
-* Operations Cost: Cops(s) = s.tcurrent*costday
-* Return Cost: Creturn(s) = deltaVreturn*Cfuel*mwet
 
-## References:
+**Ingresos:**
+- `I_total(s) = s.m_water * P_water` (agua extraída × precio en espacio)
 
-[1].	Hein, A. M., et al. "A techno-economic analysis of asteroid mining." Acta Astronautica (2019)
+**Costos Totales:**
+- `C_prop(s) = C_fuel * m_0 * (1 - e^(-s.deltaV_used/(I_sp * g_0)))` (propulsión)
+- `C_min(s) = t_mining * cost_hour * |s.seq|` (operaciones de minería)
+- `C_ops(s) = s.t_current * cost_day` (operaciones de misión)
+- `C_return(s) = deltaV_return * C_fuel * m_wet` (retorno a órbita comercial)
 
-[2].	Yang, H., et al. "Low-cost transfer between asteroids with distant orbits using multiple gravity assists." Advances in Space Research (2015)
+## 🚀 Uso Rápido
 
-[3].	Olympio, J.T. "Optimal control problem for low-thrust multiple asteroid tour missions." Journal of Guidance, Control, and Dynamics (2011)
+### Ejemplo Básico
+```python
+from src.core.environment import AsteroidMiningEnvironment
+from src.algorithms.rstar import RStar
+from src.data.nasa_loader import load_nearest_neos
 
-[4].	Kargel, J.S. "Market value of asteroidal precious metals in an age of diminishing terrestrial resources." Engineering, Construction, and Operations in Space V (1996)
+# Cargar datos de asteroides
+asteroids = load_nearest_neos(max_distance=0.1)  # AU
 
-[5].	Elvis, M. "How many ore-bearing asteroids?" Planetary and Space Science (2014)
+# Configurar ambiente y algoritmo
+env = AsteroidMiningEnvironment(asteroids)
+planner = RStar(
+    env=env,
+    w=2.0,
+    K=5, 
+    delta_threshold=5000,
+    max_local_expansions=100
+)
 
-[6] Izzo, D. "Revisiting Lambert's Problem." Celestial Mechanics and Dynamical Astronomy, 121(1), 2014.
+# Ejecutar optimización
+solution, metrics = planner.solve()
+print(f"ROI: {metrics['roi']:.2f}, Delta-V: {metrics['delta_v']:.0f} m/s")
+```
 
-[7] Likhachev, M., & Stentz, A. "R* Search." Proceedings of the National Conference on Artificial Intelligence, 2005.
+### Ejemplo Avanzado con Configuración
+```python
+from experiments.benchmark_paper import run_comparison_experiment
+
+# Ejecutar experimento comparativo R* vs PSO
+results = run_comparison_experiment(
+    scenario="commercial",
+    max_asteroids=10,
+    time_limit=3600  # 1 hora
+)
+
+# Generar gráficos comparativos
+from src.visualization.comparison_plots import plot_roi_comparison
+plot_roi_comparison(results)
+```
+
+## 📊 Metodología de Evaluación
+
+### Enfoque de Validación
+
+El modelo se valida mediante:
+
+1. **Comparación con PSO de Yang et al.** en términos de eficiencia computacional y calidad de soluciones
+2. **Análisis de sensibilidad** de parámetros económicos críticos
+3. **Estudio de casos** con asteroides reales del catálogo NEO
+4. **Métricas de desempeño**: ROI, delta-V total, tiempo de misión, tasa de éxito
+
+### Escenarios de Prueba
+
+**Caso 1: Prospección Focalizada**
+```bash
+python main.py --scenario focused --asteroids 5 --budget 1e9
+```
+
+**Caso 2: Ruta Comercial**
+```bash
+python main.py --scenario commercial --asteroids 12 --budget 2e9
+```
+
+**Caso 3: Expansión de Mercado**
+```bash
+python main.py --scenario expansion --asteroids 20 --budget 5e9
+```
+
+## 🎨 Visualización
+
+### Generar Gráficos
+```python
+from src.visualization.trajectory_plotter import plot_3d_trajectory
+from src.visualization.comparison_plots import plot_economic_analysis
+
+# Visualizar trayectoria optimizada
+plot_3d_trajectory(solution, asteroids)
+
+# Análisis económico comparativo
+plot_economic_analysis(rstar_results, pso_results)
+```
+
+### Comandos de Visualización
+```bash
+# Generar todas las figuras del paper
+python -m src.visualization.trajectory_plotter --input results/data/optimized_routes.json
+
+# Crear dashboard interactivo
+python -m src.visualization.comparison_plots --interactive
+```
+
+## 🔬 Contribuciones Principales
+
+### Avances sobre el Estado del Arte
+
+1. **Integración Económico-Orbital**: Primer modelo que combina optimización técnica con viabilidad comercial
+2. **Algoritmo R* Adaptado**: Aplicación innovadora de búsqueda heurística randomizada a dominio espacial
+3. **Modelo de Mercado In-Situ**: Enfoque realista en agua como commodity espacial
+4. **Framework Extensible**: Arquitectura modular para futuras extensiones
+
+## 📈 Resultados Esperados
+
+El modelo demuestra que:
+
+- Las rutas multi-asteroide **superan el punto de equilibrio** en plazos compatibles con inversión privada
+- La optimización económico-técnica **identifica oportunidades** no visibles para enfoques puramente técnicos
+- El algoritmo R* **escala eficientemente** a problemas de planificación complejos
+
+## 📚 Referencias
+
+[1] Hein, A. M., et al. "A techno-economic analysis of asteroid mining." Acta Astronautica (2019)
+
+[2] Yang, H., et al. "Low-cost transfer between asteroids with distant orbits using multiple gravity assists." Advances in Space Research (2015)
+
+[3] Likhachev, M., & Stentz, A. "R* Search." Proceedings of the AAAI Conference on Artificial Intelligence (2008)
+
+[4] Olympio, J.T. "Optimal control problem for low-thrust multiple asteroid tour missions." Journal of Guidance, Control, and Dynamics (2011)
