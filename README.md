@@ -26,7 +26,7 @@ pip install numpy matplotlib requests
 ### Ejecución
 ```bash
 # Descargar el código y ejecutar
-python test6.py
+python 0D1S3O.py
 ```
 
 ## 🎯 Problemática y Marco Teórico
