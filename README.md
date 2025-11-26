@@ -107,7 +107,7 @@ class RStar:
 ### Ejecución Básica
 
 ```python
-from test6 import main
+from 0D1S3O import main
 
 # Ejecutar con configuración por defecto
 main()
@@ -169,7 +169,7 @@ El sistema incluye un módulo de comparación sistemática entre R* y A* que eva
 ### Ejecutar Comparación
 ```python
 # Ejecutar estudio comparativo completo
-from test6 import run_rstar_vs_astar_study
+from 0D1S3O import run_rstar_vs_astar_study
 results = run_rstar_vs_astar_study()
 ```
 
@@ -184,7 +184,7 @@ El sistema genera animaciones que muestran:
 
 ```python
 # Generar animación de la misión
-from test6 import visualize_solution
+from 0D1S3O import visualize_solution
 visualize_solution(env, asteroids, solution, save_path="mission.gif")
 ```
 
