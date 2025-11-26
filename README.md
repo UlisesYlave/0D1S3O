@@ -156,6 +156,7 @@ El sistema ofrece tres modos de operación:
 Ruta: BASE → A5 → A12 → L2_STATION
 ΔV Total: 14,250 m/s, Agua: 1.2M kg, Tiempo: 890 días
 ```
+![mission_animation](https://github.com/user-attachments/assets/c559a535-5bc3-4144-9cd2-f96ba1ff199c)
 
 ## 🔬 Estudio Comparativo
 
